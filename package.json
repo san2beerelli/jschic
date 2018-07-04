@@ -1,0 +1,42 @@
+{
+  "name": "jschic.rocks",
+  "version": "1.0.0",
+  "description": "One Place for keep upto date with Javascript news and Skills",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel index.html ",
+    "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url /"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/san2beerelli/jschic.rocks.git"
+  },
+  "author": "Santhosh Beerelli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/san2beerelli/jschic.rocks/issues"
+  },
+  "homepage": "https://github.com/san2beerelli/jschic.rocks#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "parcel-bundler": "^1.9.3"
+  },
+  "dependencies": {
+    "@material-ui/core": "^1.3.0",
+    "@material-ui/icons": "^1.1.0",
+    "cross-env": "^5.2.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-tiny-virtual-list": "^2.1.6",
+    "styled-components": "^3.3.3"
+  }
+}

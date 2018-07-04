@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="34px" viewBox="0 0 64 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>awesome copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFC92F" offset="0%"></stop>
+            <stop stop-color="#FF9815" offset="100%"></stop>
+        </linearGradient>
+        <path d="M62,14.5521797 L46.1025641,0.0105680317 L43.8663248,2.44121532 L57.114188,14.5521797 L4.89641026,14.5521797 L18.1442735,2.43064729 L15.9080342,0 L0.0105982906,14.5521797 L0,24.1373844 C0,28.4702774 4.18632479,32 9.32649573,32 L19.1299145,32 C24.2700855,32 28.4564103,28.4702774 28.4564103,24.1373844 L28.4564103,17.8388375 L33.5435897,17.8388375 L33.5435897,24.1373844 C33.5435897,28.4702774 37.7299145,32 42.8700855,32 L52.6735043,32 C57.8136752,32 62,28.4702774 62,24.1373844 L62,14.5521797 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop---rss" transform="translate(-941.000000, -16.000000)" fill-rule="nonzero">
+            <g id="awesome-copy" transform="translate(942.000000, 17.000000)">
+                <g id="Shape">
+                    <use stroke="#979797" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use stroke="#000000" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
