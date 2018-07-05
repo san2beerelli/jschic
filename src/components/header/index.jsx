@@ -7,6 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from "@material-ui/core/Tabs";
 import Logo from "../../resources/images/logo.svg";
 import Tab from "@material-ui/core/Tab";
+import { withRouter } from "react-router";
 /* import NavBar from "../navbar";
 import Rss from "../../resources/images/rss.svg";
 import RssSelected from "../../resources/images/rss_selected.svg";
@@ -31,26 +32,34 @@ const styles = theme => ({
 class Header extends Component {
   constructor(props) {
     super(props);
+    const initalRoute = this.getRouterIndex();
+    this.state = {
+      value: initalRoute
+    };
   }
-  state = {
-    value: 2
+  navigation = ["", "tweets", "podcast"];
+  state = {};
+  getRouterIndex = () => {
+    const path = window.location.pathname.split("/")[1];
+    return this.navigation.findIndex(element => element === path);
   };
   handleChange = (event, value) => {
     this.setState({ value });
+    const { history } = this.props;
+    history.push(`/${this.navigation[value]}`);
   };
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar color="default">
           <Toolbar className={classes.toolbar}>
             <img height="32" width="110" src={Logo} />
             <Tabs
               value={this.state.value}
               indicatorColor="primary"
               textColor="primary"
-              fullWidth
               onChange={this.handleChange}
             >
               <Tab label="Rss" />
@@ -81,7 +90,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withRoot(withStyles(styles)(Header));
+export default withRoot(withStyles(styles)(withRouter(Header)));

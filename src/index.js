@@ -1,9 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Header } from "./components";
+import MainView from "./view/mainview";
 
-function App() {
-  return <Header />;
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<MainView />, document.getElementById("root"));
