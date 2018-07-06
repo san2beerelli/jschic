@@ -5,10 +5,14 @@ import Fire from "../store/firebase/fire";
 class AppProvider extends Component {
   state = {
     rssList: [],
-    hasMoreRssListItems: true
+    hasMoreRssListItems: true,
+    openRssModal: false,
+    selectedFeed: {}
   };
   actions = {
-    loadMoreRss: page => this.loadMoreRss(page)
+    loadMoreRss: page => this.loadMoreRss(page),
+    rssListItemClick: (item, type) => this.rssListItemClickHandler(item, type),
+    rssIframeClose: () => this.rssIframeCloseHandler()
   };
   setRssFeedsList(result) {
     if (result) {
@@ -24,6 +28,15 @@ class AppProvider extends Component {
     } else {
       Fire.next().then(result => this.setRssFeedsList(result));
     }
+  }
+  rssListItemClickHandler(item, type) {
+    if (type === "next") {
+      //this.setState({ openRssModal: true, selectedFeed: item });
+      window.open(item.link, "_blank");
+    }
+  }
+  rssIframeCloseHandler() {
+    this.setState({ openRssModal: false });
   }
   render() {
     return (

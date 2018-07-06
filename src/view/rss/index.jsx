@@ -8,6 +8,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import InfiniteScroll from "react-infinite-scroller";
 
 const styles = theme => ({
@@ -15,6 +19,12 @@ const styles = theme => ({
     width: "100%",
     height: "100%",
     overflow: "auto"
+  },
+  listItemStyle: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
@@ -29,6 +39,7 @@ class RssView extends Component {
             ? appState.rssList.length
             : 0;
           const { rssList, hasMoreRssListItems } = appState;
+          const { rssListItemClick } = actions;
           return (
             <div className={classes.root}>
               <InfiniteScroll
@@ -46,9 +57,23 @@ class RssView extends Component {
                   return (
                     <React.Fragment key={"rss" + indx}>
                       <ListItem>
-                        <Typography variant="body1" gutterBottom>
-                          {item.title}
-                        </Typography>
+                        <div className={classes.listItemStyle}>
+                          <IconButton
+                            onClick={() => rssListItemClick(item, "fav")}
+                          >
+                            <FavoriteBorderIcon />
+                          </IconButton>
+                          <Typography variant="body1" gutterBottom>
+                            {item.title}
+                          </Typography>
+                          <ListItemSecondaryAction
+                            onClick={() => rssListItemClick(item, "next")}
+                          >
+                            <IconButton>
+                              <NavigateNextIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </div>
                       </ListItem>
                       <Divider />
                     </React.Fragment>
