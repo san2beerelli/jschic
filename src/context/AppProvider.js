@@ -4,15 +4,26 @@ import Fire from "../store/firebase/fire";
 
 class AppProvider extends Component {
   state = {
-    rssList: []
+    rssList: [],
+    hasMoreRssListItems: true
   };
-  actions = {};
-  componentDidMount() {
-    let rssDB = Fire.fireDB("rss");
-    const me = this;
-    rssDB.once("value").then(function(snapshot) {
-      me.setState({ rssList: Object.values(snapshot.val()) });
-    });
+  actions = {
+    loadMoreRss: page => this.loadMoreRss(page)
+  };
+  setRssFeedsList(result) {
+    if (result) {
+      const rssList = [...this.state.rssList, ...result];
+      this.setState({ rssList });
+    } else {
+      this.setState({ hasMoreRssListItems: false });
+    }
+  }
+  loadMoreRss(page) {
+    if (page === 1) {
+      Fire.fireDB().then(result => this.setRssFeedsList(result));
+    } else {
+      Fire.next().then(result => this.setRssFeedsList(result));
+    }
   }
   render() {
     return (
