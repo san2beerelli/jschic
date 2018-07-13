@@ -15,15 +15,11 @@ const styles = theme => ({
 });
 
 class RssView extends Component {
-  loadFunc() {}
   render() {
     const { classes } = this.props;
     return (
       <DataConsumer>
         {({ appState, actions }) => {
-          const itemCount = appState.rssList.length
-            ? appState.rssList.length
-            : 0;
           const { rssList, hasMoreRssListItems } = appState;
           const { rssListItemClick } = actions;
           return (
