@@ -5,6 +5,7 @@ import withRoot from "../../withRoot";
 import { DataConsumer } from "../../context/AppContext";
 import InfiniteScroll from "react-infinite-scroller";
 import RssItem from "./rssItem";
+import { Progress } from "../../components";
 
 const styles = theme => ({
   root: {
@@ -28,11 +29,7 @@ class RssView extends Component {
                 pageStart={0}
                 hasMore={hasMoreRssListItems}
                 loadMore={actions.loadMoreRss}
-                loader={
-                  <div className="loader" key={0}>
-                    Loading ...
-                  </div>
-                }
+                loader={<Progress className="loader" key={0} />}
                 useWindow={true}
               >
                 {rssList.map((item, indx) => {
@@ -40,7 +37,7 @@ class RssView extends Component {
                     <RssItem
                       key={"rss" + indx}
                       item={item}
-                      rssListItemClick={rssListItemClick(item, "fav")}
+                      rssListItemClick={rssListItemClick}
                     />
                   );
                 })}

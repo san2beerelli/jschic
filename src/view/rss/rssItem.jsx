@@ -21,7 +21,7 @@ const styles = theme => ({
 
 class RssItem extends Component {
   render() {
-    const { item, classes } = this.props;
+    const { item, classes, rssListItemClick } = this.props;
     return (
       <React.Fragment>
         <ListItem>
