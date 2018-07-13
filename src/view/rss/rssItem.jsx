@@ -6,9 +6,9 @@ import Divider from "@material-ui/core/Divider";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { withStyles } from "@material-ui/core/styles";
 import withRoot from "../../withRoot";
+import { Favorite } from "../../components";
 
 const styles = theme => ({
   listItemStyle: {
@@ -27,7 +27,7 @@ class RssItem extends Component {
         <ListItem>
           <div className={classes.listItemStyle}>
             <IconButton onClick={() => rssListItemClick(item, "fav")}>
-              <FavoriteBorderIcon />
+              <Favorite onChange={val => console.log(val)} />
             </IconButton>
             <Typography variant="body1" gutterBottom>
               {item.title}
