@@ -5,7 +5,6 @@ import withRoot from "../../withRoot";
 import { Header } from "../../components";
 import AppRouter from "./router";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import AppProvider from "../../context/AppProvider";
 
 const styles = theme => ({
   root: {
@@ -21,16 +20,14 @@ class MainView extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <AppProvider>
-        <Router>
-          <div className={classes.root}>
-            <Header />
-            <div className={classes.router}>
-              <AppRouter />
-            </div>
+      <Router>
+        <div className={classes.root}>
+          <Header />
+          <div className={classes.router}>
+            <AppRouter />
           </div>
-        </Router>
-      </AppProvider>
+        </div>
+      </Router>
     );
   }
 }

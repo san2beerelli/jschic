@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import withRoot from "../../withRoot";
-import { DataConsumer } from "../../context/AppContext";
+import { RssConsumer } from "../../context";
 import InfiniteScroll from "react-infinite-scroller";
 import RssItem from "./rssItem";
 import { Progress } from "../../components";
@@ -19,7 +19,7 @@ class RssView extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <DataConsumer>
+      <RssConsumer>
         {({ appState, actions }) => {
           const { rssList, hasMoreRssListItems } = appState;
           const { rssListItemClick } = actions;
@@ -45,7 +45,7 @@ class RssView extends Component {
             </div>
           );
         }}
-      </DataConsumer>
+      </RssConsumer>
     );
   }
 }

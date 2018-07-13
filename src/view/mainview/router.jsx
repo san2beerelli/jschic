@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RssView from "../rss";
+import { RssProvider } from "../../context";
 
 const AppRouter = () => (
   <React.Fragment>
@@ -10,7 +11,13 @@ const AppRouter = () => (
   </React.Fragment>
 );
 
-const Rss = () => <RssView />;
+const Rss = () => {
+  return (
+    <RssProvider>
+      <RssView />
+    </RssProvider>
+  );
+};
 
 const About = () => (
   <div>

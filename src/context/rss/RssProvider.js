@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { DataProvider } from "./AppContext";
-import Fire from "../store/firebase/fire";
+import { BaseRssProvider } from "../rss/RssContext";
+import Fire from "../../store/firebase/fire";
 
-class AppProvider extends Component {
+class RssProvider extends Component {
   state = {
     rssList: [],
     hasMoreRssListItems: true,
@@ -14,6 +14,7 @@ class AppProvider extends Component {
     rssListItemClick: (item, type) => this.rssListItemClickHandler(item, type),
     rssIframeClose: () => this.rssIframeCloseHandler()
   };
+  fireBase;
   setRssFeedsList(result) {
     if (result) {
       const rssList = [...this.state.rssList, ...result];
@@ -24,9 +25,10 @@ class AppProvider extends Component {
   }
   loadMoreRss(page) {
     if (page === 1) {
-      Fire.fireDB().then(result => this.setRssFeedsList(result));
+      this.fireBase = new Fire("rss");
+      this.fireBase.fireDB().then(result => this.setRssFeedsList(result));
     } else {
-      Fire.next().then(result => this.setRssFeedsList(result));
+      this.fireBase.next().then(result => this.setRssFeedsList(result));
     }
   }
   rssListItemClickHandler(item, type) {
@@ -40,11 +42,11 @@ class AppProvider extends Component {
   }
   render() {
     return (
-      <DataProvider value={{ appState: this.state, actions: this.actions }}>
+      <BaseRssProvider value={{ appState: this.state, actions: this.actions }}>
         {this.props.children}
-      </DataProvider>
+      </BaseRssProvider>
     );
   }
 }
 
-export default AppProvider;
+export default RssProvider;

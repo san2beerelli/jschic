@@ -2,12 +2,12 @@ import firebaseApp from "firebase/app";
 import "firebase/database";
 import firebaseConfig from "../../resources/config/firebaseconfig";
 
+firebaseApp.initializeApp(firebaseConfig);
 class Fire {
-  constructor() {
-    firebaseApp.initializeApp(firebaseConfig);
+  constructor(type) {
     this.ref = firebaseApp
       .database()
-      .ref(this.dbConfig.rss)
+      .ref(this.dbConfig[type])
       .orderByKey();
   }
   ref;
@@ -54,4 +54,4 @@ class Fire {
   }
 }
 
-export default new Fire();
+export default Fire;
